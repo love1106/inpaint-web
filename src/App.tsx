@@ -19,7 +19,7 @@ import {
 
 function App() {
   const [file, setFile] = useState<File>()
-  const [stateLanguageTag, setStateLanguageTag] = useState<'en' | 'zh'>('zh')
+  const [stateLanguageTag, setStateLanguageTag] = useState<'en' | 'zh'>('en')
 
   onSetLanguageTag(() => setStateLanguageTag(languageTag()))
 
@@ -30,6 +30,7 @@ function App() {
 
   useEffect(() => {
     downloadModel('inpaint', setDownloadProgress)
+    setLanguageTag('en')
   }, [])
 
   useClickAway(modalRef, () => {
@@ -63,7 +64,7 @@ function App() {
         <div className="text-4xl font-bold text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out">
           Inpaint-web
         </div>
-        <div className="hidden md:flex justify-end w-[300px] mx-1 sm:mx-5">
+        <div className="hidden md:flex justify-end w-[300px] mx-1 sm:mx-5 opacity-0">
           <Button
             className="mr-5 flex"
             onClick={() => {
